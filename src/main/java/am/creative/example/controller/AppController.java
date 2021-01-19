@@ -3,6 +3,7 @@ package am.creative.example.controller;
 import am.creative.example.entity.CommentEntity;
 import am.creative.example.entity.NotificationEntity;
 import am.creative.example.service.AppService;
+import am.creative.example.service.AppServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
