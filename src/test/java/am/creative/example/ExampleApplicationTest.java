@@ -3,7 +3,6 @@ package am.creative.example;
 import am.creative.example.entity.CommentEntity;
 import am.creative.example.entity.NotificationEntity;
 import am.creative.example.service.AppService;
-import am.creative.example.service.AppServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

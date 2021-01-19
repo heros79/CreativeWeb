@@ -57,7 +57,7 @@ public class AppServiceImpl implements AppService{
      * @param commentEntity
      * Метод сохраняет комментарий а БД,
      * при возникновении проблемы данный коментарий удаляется.
-     * Метор таботает асинхронно
+     * Метод работает асинхронно
      */
     @Async
     @Transactional
@@ -99,9 +99,9 @@ public class AppServiceImpl implements AppService{
 
     /**
      * @param event
-     * Метод олучает уведомление о событии сохранения комментария в БД,
+     * Метод получает уведомление о событии сохранения комментария в БД,
      * после сохраняет уведомление, при неудачной работе логики флаг отпрвки
-     * уведомление ставится false
+     * уведомления ставится false
      */
     @Async
     @EventListener
@@ -150,7 +150,7 @@ public class AppServiceImpl implements AppService{
     /**
      * @param commentId
      * @return {@link NotificationEntity}
-     * Метод ыозвращает уведомление по id комментария
+     * Метод возвращает уведомление по id комментария
      */
     public NotificationEntity getNotificationByCommentId(Long commentId) {
         return notificationRepository.findByCommentId(commentId);
