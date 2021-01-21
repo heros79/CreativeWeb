@@ -88,6 +88,15 @@ public class AppServiceImpl implements AppService{
     }
 
     /**
+     * Метод возворащает целиком весь лист коментариев
+     * @return {@link List<CommentEntity>}
+     */
+    @Override
+    public List<CommentEntity> getAllComments() {
+        return commentRepository.findAll();
+    }
+
+    /**
      * @param id
      * @return {@link CommentEntity}
      * Метод возвращает Комментарий

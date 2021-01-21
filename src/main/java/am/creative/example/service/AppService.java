@@ -14,4 +14,5 @@ public interface AppService {
     List<NotificationEntity> getNotifications(Integer pageCount, Integer pageSize);
     NotificationEntity getNotification(Long id);
     NotificationEntity getNotificationByCommentId(Long commentId);
+    List<CommentEntity> getAllComments();
 }

@@ -36,6 +36,12 @@ public class AppController {
         return ResponseEntity.ok(entityList);
     }
 
+    @RequestMapping(value = "/comments", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<?> getAllComments () {
+        List<CommentEntity> entityList = appService.getAllComments();
+        return ResponseEntity.ok(entityList);
+    }
+
     @RequestMapping(value = "/comment/{id}", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<?> getCommentById (@PathVariable("id") Long id) {
         CommentEntity entity = appService.getComment(id);

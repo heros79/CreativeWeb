@@ -31,7 +31,7 @@ class ExampleApplicationTest {
         entity.setComment("OK");
         entity.setTime(new Date());
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 1; i < 1001; i++) {
             entity.setId((long)i + 1);
             appService.save(entity);
             CommentEntity commentEntity = appService.getComment((long)1);
