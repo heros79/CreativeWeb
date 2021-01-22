@@ -11,6 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {ExampleApplication.class})
@@ -23,37 +24,38 @@ class ExampleApplicationTest {
     @Test
     void saveCommentTest() {
 
-        int rightCommentCount = 0;
-        int falseCommentCount = 0;
         long a = System.currentTimeMillis();
-        System.out.println();
         CommentEntity entity = new CommentEntity();
         entity.setComment("OK");
         entity.setTime(new Date());
 
         for (int i = 1; i < 1001; i++) {
-            entity.setId((long)i + 1);
+            entity.setId((long)i);
             appService.save(entity);
-            CommentEntity commentEntity = appService.getComment((long)1);
-            if (commentEntity == null) {
-                falseCommentCount++;
-                NotificationEntity notificationEntity = appService.getNotificationByCommentId((long)i + 1);
-                if (notificationEntity != null) {
-                    throw new RuntimeException();
-                }
-            } else {
-                rightCommentCount ++;
-            }
         }
 
         try {
             Thread.sleep(4000);
-            System.out.println("Время работы в секундах для 1000 комметариев составляет " + (((System.currentTimeMillis() - a) / 1000) - 4));
-
-            System.out.println("Процент удачливых комментарий составляет " + ((double)rightCommentCount / 10) + " процента");
-            System.out.println("Процент неудачливых комментарий составляет " + ((double)falseCommentCount / 10) + " процента");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        } catch (InterruptedException ignored) {
         }
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ignored) {
+        }
+
+        List<CommentEntity> list = appService.getAllComments();
+
+
+
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException ignored) {
+        }
+
+        System.out.println("Время работы в секундах для 1000 комметариев составляет " + (((System.currentTimeMillis() - a) / 1000) - 4));
+
+        System.out.println("Процент удачливых комментарий составляет " + ((double)list.size() / 10) + " процента");
+        System.out.println("Процент неудачливых комментарий составляет " + ((double)(1000 - list.size()) / 10) + " процента");
     }
 }
